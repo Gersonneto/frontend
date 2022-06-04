@@ -1,0 +1,38 @@
+<div class="mat-elevation-z5">
+    <table mat-table [dataSource]="caminhao">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="modelo">
+            <th mat-header-cell *matHeaderCellDef>Modelo</th>
+            <td mat-cell *matCellDef="let row">{{ row.modelo }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="anoFabricacao">
+            <th mat-header-cell *matHeaderCellDef>Ano de Fabricação</th>
+            <td mat-cell *matCellDef="let row">{{ row.anoFabricacao}}</td>
+        </ng-container>
+        <ng-container matColumnDef="anoModelo">
+            <th mat-header-cell *matHeaderCellDef>Ano de Fabricação</th>
+            <td mat-cell *matCellDef="let row">{{ row.anoModelo}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let row">
+                <a routerLink="/caminhao/update/{{ row.id }}" class="edit">
+                    <i class="material-icons">edit</i>
+                </a>
+                <a routerLink="/caminhao/delete/{{ row.id }}" class="delete">
+                    <i class="material-icons">delete</i>
+                </a>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

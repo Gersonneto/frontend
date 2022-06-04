@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-title>Novo Caminhão</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Modelo" [(ngModel)]="caminhao.modelo" name="modelo">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Ano de Fabricação" [(ngModel)]="caminhao.anoFabricacao" name="anoFabricacao">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Ano do Modelo" [(ngModel)]="caminhao.anoModelo" name="anoModelo">
+        </mat-form-field>
+    </form>
+
+    <button mat-raised-button (click)="createProduct()" class="mainColor">
+        Salvar
+    </button>
+    
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+</mat-card>
+

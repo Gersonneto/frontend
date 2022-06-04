@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-title>Alterar Produto</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome"
+                [(ngModel)]="caminhao.modelo" name="modelo">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Ano Fabricaçao"
+                [(ngModel)]="caminhao.anoFabricacao" name="anoFabricacao">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Ano Modelo"
+                [(ngModel)]="caminhao.anoModelo" name="anoModelo">
+        </mat-form-field>
+    </form>
+    <button mat-raised-button (click)="updatecaminhao()" color="primary">
+        Atualizar
+    </button>
+    
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+</mat-card>

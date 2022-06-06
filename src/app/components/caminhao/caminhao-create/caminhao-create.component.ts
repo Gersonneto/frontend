@@ -24,7 +24,8 @@ export class CaminhaoCreateComponent implements OnInit {
   }
 
   createProduct(): void {
-  if (this.validacao){
+    
+  if (this.validacao()){
     this.CaminhaoService.create(this.caminhao).subscribe(() => {
       this.CaminhaoService.showMessage('Produto Criado!')
       this.router.navigate(['/caminhao'])
@@ -37,42 +38,47 @@ export class CaminhaoCreateComponent implements OnInit {
     this.router.navigate(['/caminhao'])
   }
   validacao():boolean{
+    
     var validar =true;
     var mensagem="";
-    if (this.caminhao.anoModelo !=""|| this.caminhao.anoFabricacao!=""|| this.caminhao.modelo!="")
+    if (this.caminhao.anoModelo ==""|| this.caminhao.anoFabricacao==""|| this.caminhao.modelo=="")
     {
       validar = false;
-      mensagem="Todos os campos são obrigatórios!";
+      mensagem='Todos os campos são obrigatórios! ';
+     // this.CaminhaoService.showMessage(mensagem,true); 
      }
     if (this.caminhao.modelo!="FH" && this.caminhao.modelo != "FM")
     {
       validar=false;
-      if(mensagem.trim()!="")
-         mensagem+="<br>";
-      mensagem +="O modelo do caminhão deverá ser FM Ou FH";
+     
+         
+      mensagem +='O modelo do caminhão deverá ser FM Ou FH!';
+      //this.CaminhaoService.showMessage(mensagem,true); 
      }
     if (this.caminhao.anoFabricacao.length!= 4 && isNaN(Number(this.caminhao.anoFabricacao))==false)
     {
      
         validar=false;
-        if(mensagem.trim()!="")
-           mensagem+="<br>";
-         mensagem +="O ano de Fabricação não é valido";
-     
+       
+          
+        mensagem +='O ano de Fabricação não é valido !';
+        //this.CaminhaoService.showMessage(mensagem,true); 
            
     }
     if (this.caminhao.anoModelo.length!= 4 && isNaN(Number(this.caminhao.anoModelo))==false)
     {      
         validar=false;
-        if(mensagem.trim()!="")
-           mensagem+="<br>";
-         mensagem +="O ano do Modelo não é valido";     
+        
+          
+         mensagem +='O ano do Modelo não é valido !';  
+         //this.CaminhaoService.showMessage(mensagem,true);    
            
     }
     if (!validar)
     {
-      this.CaminhaoService.showMessage(mensagem); 
+      this.CaminhaoService.showMessage(mensagem,true); 
     }
+    
   return validar;
   }
 

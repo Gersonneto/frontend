@@ -12,9 +12,11 @@ import { environment } from 'src/environments/environment';
 export class CaminhaoService {
 
   baseUrl = environment.api+"api/caminhoes";
+  private msgQueue = [];
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
+  
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'x', {
       duration: 3000,
@@ -23,6 +25,7 @@ export class CaminhaoService {
       panelClass: isError ? ['msg-error'] : ['msg-success']
     })
   }
+
 
   create(caminhao: Caminhao): Observable<Caminhao> {
     return this.http.post<Caminhao>(this.baseUrl+"/cadastrar", caminhao).pipe(
